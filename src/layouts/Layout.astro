@@ -35,6 +35,7 @@ const sidebarNavigation = getSidebarNavigation();
 
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#1d4ed8" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111827" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="JWA" />
@@ -47,33 +48,33 @@ const sidebarNavigation = getSidebarNavigation();
     />
   </head>
   <body
-    class="bg-jpmc-light dark:bg-gray-900 text-jpmc-dark dark:text-gray-100 min-h-screen transition-colors duration-200"
+    class="bg-jpmc-light dark:bg-jpmc-gray-900 text-jpmc-dark dark:text-jpmc-gray-100 min-h-screen transition-colors duration-200"
   >
     <div class="flex flex-col min-h-screen">
       <!-- Header -->
       <header
-        class="bg-white shadow-lg border-b-4 border-jpmc-blue transition-colors duration-200 dark:bg-jpmc-gray-800"
+        class="bg-white shadow-lg border-b-4 border-jpmc-blue transition-colors duration-200 dark:bg-jpmc-gray-900"
       >
         <div class="container mx-auto px-4 lg:pr-0 py-4">
           <div class="flex items-center stretch justify-between">
-            <!-- Logo -->
-            <div class="flex items-center space-x-4">
+            <!-- Logo: off-white background in dark mode for contrast -->
+            <div class="flex items-center space-x-4 dark:bg-jpmc-gray-100 dark:rounded-lg dark:px-3 dark:py-2 dark:-m-2">
               <img
                 src="/img/96x96.png"
                 alt="JPMC Workers Alliance Logo"
                 class="w-12 h-12"
               />
               <div class="hidden md:block">
-                <div class="text-xl font-bold text-jpmc-blue">JPMC</div>
-                <div class="text-lg font-semibold text-jpmc-red">WORKERS</div>
-                <div class="text-sm font-medium text-jpmc-gold">ALLIANCE</div>
+                <div class="text-xl font-bold text-jpmc-blue dark:text-jpmc-blue-700">JPMC</div>
+                <div class="text-lg font-semibold text-jpmc-red dark:text-jpmc-red-700">WORKERS</div>
+                <div class="text-sm font-medium text-jpmc-gold dark:text-jpmc-gold-700">ALLIANCE</div>
               </div>
             </div>
 
             <!-- Page Title -->
             <div class="flex-1 text-center hidden md:block">
               <h1
-                class="text-2xl font-bold text-jpmc-dark dark:text-gray-100 md:text-xl"
+                class="text-2xl font-bold text-jpmc-dark dark:text-jpmc-gray-100 md:text-xl"
               >
                 {title}
               </h1>
@@ -124,7 +125,7 @@ const sidebarNavigation = getSidebarNavigation();
           aria-label="Mobile navigation"
           data-testid="mobile-menu"
         >
-          <div class="px-4 py-2 space-y-2 bg-jpmc-gray-50 dark:bg-gray-500">
+          <div class="px-4 py-2 space-y-2 bg-jpmc-gray-50 dark:bg-jpmc-gray-900">
             {
               Object.values(getSidebarNavigation())
                 .flatMap((section) => section.items)
@@ -134,8 +135,8 @@ const sidebarNavigation = getSidebarNavigation();
                     href={item.href}
                     class={`block py-2 font-medium transition-colors ${
                       isActiveLink(currentPath, item.href)
-                        ? "text-jpmc-blue font-semibold"
-                        : "text-jpmc-dark hover:text-jpmc-blue"
+                        ? "text-jpmc-blue dark:text-jpmc-blue-300 font-semibold"
+                        : "text-jpmc-dark dark:text-jpmc-gray-200 hover:text-jpmc-blue dark:hover:text-jpmc-blue-300"
                     }`}
                   >
                     {item.label}
@@ -161,7 +162,7 @@ const sidebarNavigation = getSidebarNavigation();
       <div class="flex flex-1">
         <!-- Sidebar -->
         <aside
-          class="w-64 bg-white dark:bg-gray-800 shadow-lg border-r border-gray-200 dark:border-gray-700 hidden lg:block transition-colors duration-200"
+          class="w-64 bg-white dark:bg-jpmc-gray-900 shadow-lg border-r border-gray-200 dark:border-jpmc-gray-600 hidden lg:block transition-colors duration-200"
           aria-label="Sidebar navigation"
         >
           <div class="p-6">
@@ -171,7 +172,7 @@ const sidebarNavigation = getSidebarNavigation();
                 sidebarNavigation.map((section) => (
                   <div class="space-y-2">
                     <h3
-                      class={`text-sm font-medium text-${section.color} uppercase tracking-wide`}
+                      class={`text-sm font-medium text-${section.color} dark:text-jpmc-blue-300 uppercase tracking-wide`}
                     >
                       {section.title}
                     </h3>
@@ -182,8 +183,8 @@ const sidebarNavigation = getSidebarNavigation();
                             href={item.href}
                             class={`block py-2 px-3 rounded-md transition-colors ${
                               isActiveLink(currentPath, item.href)
-                                ? `text-${section.color} bg-${section.color === "jpmc-blue" ? "jpmc-gray-50" : "jpmc-gray-50"} dark:bg-gray-700 font-semibold`
-                                : `text-jpmc-dark dark:text-gray-200 hover:text-${section.color} hover:bg-jpmc-gray-50 dark:hover:bg-gray-700`
+                                ? `text-${section.color} dark:text-jpmc-blue-300 bg-${section.color === "jpmc-blue" ? "jpmc-gray-50" : "jpmc-gray-50"} dark:bg-jpmc-gray-900 font-semibold`
+                                : `text-jpmc-dark dark:text-jpmc-gray-200 hover:text-${section.color} dark:hover:text-jpmc-blue-300 hover:bg-jpmc-gray-50 dark:hover:bg-jpmc-gray-700`
                             }`}
                           >
                             {item.label}
@@ -199,7 +200,7 @@ const sidebarNavigation = getSidebarNavigation();
             <!-- Social Links -->
             <div>
               <SocialLinks variant="sidebar">
-                <a slot="title" class="text-jpmc-blue hover:text-jpmc-gold transition-colors normal-case " href="/contact">Connect With Us</a>
+                <a slot="title" class="text-jpmc-blue dark:text-jpmc-blue-300 hover:text-jpmc-gold dark:hover:text-jpmc-gold-400 transition-colors normal-case " href="/contact">Connect With Us</a>
               </SocialLinks>
             </div>
           </div>
@@ -207,12 +208,12 @@ const sidebarNavigation = getSidebarNavigation();
 
         <!-- Main content area -->
         <main
-          class="flex-1 bg-jpmc-gray-50 dark:bg-gray-900 transition-colors duration-200"
+          class="flex-1 bg-jpmc-gray-50 dark:bg-jpmc-gray-900 transition-colors duration-200"
         >
           <div class="container mx-auto px-4 py-8">
             <!-- Mobile page title -->
             <div class="lg:hidden mb-6">
-              <h1 class="text-2xl font-bold text-jpmc-dark dark:text-gray-100">
+              <h1 class="text-2xl font-bold text-jpmc-dark dark:text-jpmc-gray-100">
                 {title}
               </h1>
             </div>
@@ -225,11 +226,11 @@ const sidebarNavigation = getSidebarNavigation();
 
       <!-- Footer -->
       <footer
-        class="bg-jpmc-gray-100 dark:bg-gray-800 text-jpmc-gray-800 dark:text-gray-200 py-8 transition-colors duration-200 shadow"
+        class="bg-jpmc-gray-100 dark:bg-jpmc-gray-900 text-jpmc-gray-800 dark:text-jpmc-gray-200 py-8 transition-colors duration-200 shadow"
       >
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Logo and description -->
+            <!-- Logo and description (dark: variants for WCAG AA contrast on dark bg) -->
             <div class="space-y-4">
               <div class="flex items-center space-x-3">
                 <img
@@ -238,17 +239,17 @@ const sidebarNavigation = getSidebarNavigation();
                   class="w-10 h-10"
                 />
                 <div>
-                  <div class="font-bold text-jpmc-blue">JPMC</div>
-                  <div class="font-semibold text-jpmc-red">WORKERS</div>
-                  <div class="font-medium text-jpmc-gold">ALLIANCE</div>
+                  <div class="font-bold text-jpmc-blue dark:text-jpmc-blue-300">JPMC</div>
+                  <div class="font-semibold text-jpmc-red dark:text-jpmc-red-300">WORKERS</div>
+                  <div class="font-medium text-jpmc-gold dark:text-jpmc-gold-400">ALLIANCE</div>
                 </div>
               </div>
-              <p class="text-sm">
+              <p class="text-sm text-jpmc-gray-800 dark:text-jpmc-gray-200">
                 Better working conditions for all JPMC employees worldwide.
               </p>
             </div>
 
-            <!-- Quick links -->
+            <!-- Quick links (dark: link color for readability) -->
             <div class="space-y-4">
               <h2 class="font-semibold text-jpmc-gold dark:text-jpmc-gold-400">
                 Quick Links
@@ -259,7 +260,7 @@ const sidebarNavigation = getSidebarNavigation();
                     <li>
                       <a
                         href={item.href}
-                        class="hover:text-jpmc-blue transition-colors"
+                        class="text-jpmc-gray-800 dark:text-jpmc-gray-200 hover:text-jpmc-blue dark:hover:text-jpmc-blue-300 transition-colors"
                       >
                         {item.label}
                       </a>
@@ -274,7 +275,7 @@ const sidebarNavigation = getSidebarNavigation();
           </div>
 
           <div
-            class="border-t border-gray-700 dark:border-gray-600 mt-8 pt-8 text-center text-sm text-jpmc-gray-600 dark:text-gray-400"
+            class="border-t border-gray-700 dark:border-jpmc-gray-600 mt-8 pt-8 text-center text-sm text-jpmc-gray-600 dark:text-jpmc-gray-400"
           >
             <p>&copy; 2025 JPMC Workers Alliance. All rights reserved.</p>
             <p class="mt-2">
@@ -286,21 +287,7 @@ const sidebarNavigation = getSidebarNavigation();
     </div>
 
     <script>
-      // Auto-detect system dark mode preference and apply dark class
-      /* off for now
-       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-         document.documentElement.classList.add('dark');
-       }
-       
-       // Listen for changes in system preference
-       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-         if (e.matches) {
-           document.documentElement.classList.add('dark');
-         } else {
-           document.documentElement.classList.remove('dark');
-         }
-       }); //*/
-
+      // Dark mode is media-query-only (prefers-color-scheme: dark); no .dark class is applied.
       // Mobile menu toggle
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");

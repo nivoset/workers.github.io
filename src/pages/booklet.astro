@@ -77,9 +77,9 @@ const booklets: Booklet[] = bookletEntries.map(entry => ({
 
       <div class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6 mb-8">
         {booklets.map((booklet) => (
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 flex flex-col">
+          <div class="bg-white dark:bg-jpmc-gray-900 rounded-lg shadow-xl overflow-hidden border-2 border-gray-200 dark:border-jpmc-gray-600 flex flex-col">
             {/* Preview Image */}
-            <div class="aspect-square dark:bg-gray-700 flex items-center justify-center">
+            <div class="aspect-square dark:bg-jpmc-gray-900 flex items-center justify-center">
               {booklet.preview ? (
                 <Image
                   width={300}
@@ -90,7 +90,7 @@ const booklets: Booklet[] = bookletEntries.map(entry => ({
                   class="w-full h-full object-cover"
                 />
               ) : (
-                <div class="text-gray-500 dark:text-gray-400 flex items-center justify-center p-4 min-h-[250px]">
+                <div class="text-gray-500 dark:text-jpmc-gray-400 flex items-center justify-center p-4 min-h-[250px]">
                   <div class="text-center">
                     <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
@@ -106,7 +106,7 @@ const booklets: Booklet[] = bookletEntries.map(entry => ({
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 truncate">
                 {booklet.name}
               </h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <p class="text-sm text-gray-600 dark:text-jpmc-gray-400 mb-3">
                 PDF • {booklet.isFolder ? 'Folder' : 'File'}
               </p>
               

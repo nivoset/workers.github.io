@@ -60,7 +60,7 @@ function getHeaderDepthClass(depth: number) {
         <div class="mb-4 not-prose">
           <a 
             href={parentPath} 
-            class="inline-flex items-center text-jpmc-blue hover:text-jpmc-red transition-colors text-sm font-medium"
+            class="inline-flex items-center text-jpmc-blue dark:text-jpmc-gray-200 hover:text-jpmc-red transition-colors text-sm font-medium"
           >
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -83,7 +83,7 @@ function getHeaderDepthClass(depth: number) {
           <ul class="list-disc list-inside">
             {headings.map(heading => (
               <li class={`${getHeaderDepthClass(heading.depth)} not-prose`}>
-                <a href={`#${heading.slug}`} class="text-jpmc-blue no-underline hover:underline">
+                <a href={`#${heading.slug}`} class="text-jpmc-blue dark:text-jpmc-blue-300 no-underline hover:underline">
                   {heading.text}
                 </a>
               </li>
@@ -96,7 +96,7 @@ function getHeaderDepthClass(depth: number) {
         <slot />
       </section>
 
-      <footer class="mt-8 text-sm text-muted border-t border-jpmc-gray-200 pt-4">
+      <footer class="mt-8 text-sm text-muted border-t border-jpmc-gray-200 dark:border-jpmc-gray-600 pt-4">
         <p>
           Sources and links within are provided inline. For corrections or
           suggestions, please send us an email or let us know on discord.

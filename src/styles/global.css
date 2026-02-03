@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Dark mode: driven only by client color preference (prefers-color-scheme: dark); no .dark class */
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
 @theme {
   /* Dark mode configuration */
@@ -199,27 +200,26 @@
     text-decoration: underline;
   }
 
-  /* Dark mode styles using Tailwind's dark: prefix */
-  .dark body {
-    color: var(--color-jpmc-gray-100);
-    background-color: var(--color-jpmc-gray-900);
-  }
+  /* Dark mode: prefers-color-scheme only (no .dark class).
+   * Readability: WCAG 2.1 AA — body text ≥4.5:1, large text ≥3:1.
+   * gray-100/50 on gray-900 and blue-300/200 meet AA. */
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: var(--color-jpmc-gray-100);
+      background-color: var(--color-jpmc-gray-900);
+    }
 
-  .dark h1,
-  .dark h2,
-  .dark h3,
-  .dark h4,
-  .dark h5,
-  .dark h6 {
-    color: var(--color-jpmc-gray-50);
-  }
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--color-jpmc-gray-50);
+    }
 
-  .dark a {
-    color: var(--color-jpmc-blue-300);
-  }
+    a {
+      color: var(--color-jpmc-blue-300);
+    }
 
-  .dark a:hover {
-    color: var(--color-jpmc-blue-200);
+    a:hover {
+      color: var(--color-jpmc-blue-200);
+    }
   }
 }
 
@@ -231,9 +231,11 @@
     color: var(--color-jpmc-blue-700);
   }
 
-  .dark .content-blue {
-    background-color: var(--color-jpmc-gray-800);
-    color: var(--color-jpmc-blue-300);
+  @media (prefers-color-scheme: dark) {
+    .content-blue {
+      background-color: var(--color-jpmc-gray-900);
+      color: var(--color-jpmc-blue-300);
+    }
   }
 
   /* Content Blue Light - Light blue background with dark blue text in light mode, dark blue background with light blue in dark mode */
@@ -242,9 +244,11 @@
     color: var(--color-jpmc-blue-800);
   }
 
-  .dark .content-blue-light {
-    background-color: var(--color-jpmc-blue-900);
-    color: var(--color-jpmc-blue-200);
+  @media (prefers-color-scheme: dark) {
+    .content-blue-light {
+      background-color: var(--color-jpmc-blue-900);
+      color: var(--color-jpmc-blue-200);
+    }
   }
 
   /* Content Red - White background with red text in light mode, dark background with lighter red in dark mode */
@@ -253,9 +257,11 @@
     color: var(--color-jpmc-red-700);
   }
 
-  .dark .content-red {
-    background-color: var(--color-jpmc-gray-800);
-    color: var(--color-jpmc-red-300);
+  @media (prefers-color-scheme: dark) {
+    .content-red {
+      background-color: var(--color-jpmc-gray-900);
+      color: var(--color-jpmc-red-300);
+    }
   }
 
   /* Content Gold - White background with gold text in light mode, dark background with lighter gold in dark mode */
@@ -264,9 +270,11 @@
     color: var(--color-jpmc-gold-700);
   }
 
-  .dark .content-gold {
-    background-color: var(--color-jpmc-gray-800);
-    color: var(--color-jpmc-gold-300);
+  @media (prefers-color-scheme: dark) {
+    .content-gold {
+      background-color: var(--color-jpmc-gray-900);
+      color: var(--color-jpmc-gold-300);
+    }
   }
 
   /* Text utilities with dark mode support */
@@ -274,8 +282,10 @@
     color: var(--color-jpmc-gray-600);
   }
 
-  .dark .text-muted {
-    color: var(--color-jpmc-gray-400);
+  @media (prefers-color-scheme: dark) {
+    .text-muted {
+      color: var(--color-jpmc-gray-400);
+    }
   }
 
   .text-emphasis {
@@ -283,8 +293,10 @@
     font-weight: 600;
   }
 
-  .dark .text-emphasis {
-    color: var(--color-jpmc-blue-300);
+  @media (prefers-color-scheme: dark) {
+    .text-emphasis {
+      color: var(--color-jpmc-blue-300);
+    }
   }
 
   /* Border utilities with dark mode support */
@@ -292,16 +304,20 @@
     border-color: var(--color-jpmc-gray-200);
   }
 
-  .dark .border-content-subtle {
-    border-color: var(--color-jpmc-gray-600);
+  @media (prefers-color-scheme: dark) {
+    .border-content-subtle {
+      border-color: var(--color-jpmc-gray-600);
+    }
   }
 
   .border-content-accent {
     border-color: var(--color-jpmc-blue-200);
   }
 
-  .dark .border-content-accent {
-    border-color: var(--color-jpmc-blue-600);
+  @media (prefers-color-scheme: dark) {
+    .border-content-accent {
+      border-color: var(--color-jpmc-blue-600);
+    }
   }
 
   /* Additional utility classes */
@@ -318,8 +334,10 @@
     background-color: rgb(255 255 255 / 0.8);
   }
 
-  .dark .glass-effect {
-    background-color: rgb(31 41 55 / 0.8);
+  @media (prefers-color-scheme: dark) {
+    .glass-effect {
+      background-color: rgb(31 41 55 / 0.8);
+    }
   }
 }
 
@@ -380,7 +398,7 @@
 }
 
 @utility card-dark {
-  background-color: var(--color-jpmc-gray-800);
+  background-color: var(--color-jpmc-gray-900);
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
@@ -401,7 +419,7 @@
 }
 
 @utility card-elevated-dark {
-  background-color: var(--color-jpmc-gray-800);
+  background-color: var(--color-jpmc-gray-900);
   padding: 2rem;
   border-radius: 0.75rem;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
@@ -426,9 +444,57 @@
 
 @utility section-blue {
   background-color: var(--color-jpmc-blue-50);
-} 
+}
 
-
+/* Dark mode overrides for @utility components (prefers-color-scheme only) */
+@layer utilities {
+  @media (prefers-color-scheme: dark) {
+    .btn-primary {
+      background-color: var(--color-jpmc-blue-700);
+    }
+    .btn-primary-hover:hover {
+      background-color: var(--color-jpmc-blue-800);
+    }
+    .btn-secondary {
+      background-color: var(--color-jpmc-gray-900);
+      border-color: var(--color-jpmc-blue-400);
+      color: var(--color-jpmc-blue-300);
+    }
+    .btn-secondary-hover:hover {
+      background-color: var(--color-jpmc-gray-900);
+    }
+    .btn-accent {
+      background-color: var(--color-jpmc-gold-600);
+    }
+    .btn-accent-hover:hover {
+      background-color: var(--color-jpmc-gold-700);
+    }
+    .card {
+      background-color: var(--color-jpmc-gray-900);
+      border-color: var(--color-jpmc-gray-600);
+    }
+    .card-hover:hover {
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+    }
+    .card-elevated {
+      background-color: var(--color-jpmc-gray-900);
+      border-color: var(--color-jpmc-gray-600);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+    }
+    .section-light {
+      background-color: var(--color-jpmc-gray-900);
+    }
+    .section-gray {
+      background-color: var(--color-jpmc-gray-900);
+    }
+    .section-blue {
+      background-color: var(--color-jpmc-blue-900);
+    }
+    .gradient-subtle {
+      background: linear-gradient(to right, var(--color-jpmc-blue-900), var(--color-jpmc-gold-900));
+    }
+  }
+}
 
 /* View transition styles, page to page navigation */
 @view-transition {
@@ -490,4 +556,25 @@
 .fabulous:hover,
 .fabulous:focus-visible {
   animation-play-state: running;
+}
+
+/* Dark mode: ensure .fabulous has contrast (light text on dark preference) */
+@media (prefers-color-scheme: dark) {
+  .fabulous {
+    color: white;
+    background:
+      linear-gradient(var(--color-jpmc-gray-900), var(--color-jpmc-gray-900)) padding-box,
+      conic-gradient(
+          from var(--angle, 0deg),
+          #ff0000,
+          #ff7f00,
+          #ffff00,
+          #00ff00,
+          #0000ff,
+          #4b0082,
+          #8b00ff,
+          #ff0000
+        )
+        border-box;
+  }
 }

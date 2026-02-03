@@ -52,7 +52,7 @@ const pageTitle = folderPath
     <h1 class="text-4xl font-bold text-jpmc-blue mb-8">Images & Materials</h1>
 
     <nav class="mb-8" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+      <ol class="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-jpmc-gray-400">
         {breadcrumbs.map((crumb, index) => (
           <li class="flex items-center">
             {index > 0 && (
@@ -74,7 +74,7 @@ const pageTitle = folderPath
     </nav>
 
     <div class="mb-8">
-      <p class="text-xl text-gray-700 dark:text-gray-300">
+      <p class="text-xl text-gray-700 dark:text-jpmc-gray-300">
         {folderPath
           ? `Contents of "${folderPath.split('/').pop()}"`
           : 'Download and share these images and resources to support the JPMC Workers Alliance.'}
@@ -83,7 +83,7 @@ const pageTitle = folderPath
 
     {currentEntries.length === 0 ? (
       <div class="text-center py-12">
-        <p class="text-gray-500 dark:text-gray-400 text-lg">
+        <p class="text-gray-500 dark:text-jpmc-gray-400 text-lg">
           This folder is empty.
         </p>
       </div>
@@ -119,16 +119,16 @@ const pageTitle = folderPath
           const downloadUrl = !isFolder ? `/images/${entry.data.relativePath}` : null;
 
           return (
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 flex flex-col h-full">
+            <div class="bg-white dark:bg-jpmc-gray-900 rounded-lg shadow-xl overflow-hidden border-2 border-gray-200 dark:border-jpmc-gray-600 flex flex-col h-full">
               {/* For folders, wrap preview in link so clicking the image opens the folder */}
               {isFolder && folderUrl ? (
                 <a
                   href={folderUrl}
-                  class="aspect-square dark:bg-gray-700 flex items-center justify-center block cursor-pointer hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-jpmc-blue focus:ring-inset"
+                  class="aspect-square dark:bg-jpmc-gray-900 flex items-center justify-center block cursor-pointer hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-jpmc-blue focus:ring-inset"
                   aria-label={`Open folder ${entry.data.name}`}
                 >
                   {(isFolder && isPlaceholder) ? (
-                    <div class="text-gray-500 dark:text-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover w-full">
+                    <div class="text-gray-500 dark:text-jpmc-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover w-full">
                       <span>Folder</span>
                     </div>
                   ) : imageModule ? (
@@ -141,15 +141,15 @@ const pageTitle = folderPath
                       class="max-w-full max-h-full object-contain"
                     />
                   ) : (
-                    <div class="text-gray-500 dark:text-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover w-full">
+                    <div class="text-gray-500 dark:text-jpmc-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover w-full">
                       <span>Image not found: {imageToUse}</span>
                     </div>
                   )}
                 </a>
               ) : (
-                <div class="aspect-square dark:bg-gray-700 flex items-center justify-center">
+                <div class="aspect-square dark:bg-jpmc-gray-900 flex items-center justify-center">
                   {(entry.data.type.toLowerCase() === 'pdf' && !entry.data.preview?.trim()) ? (
-                    <div class="text-gray-500 dark:text-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover">
+                    <div class="text-gray-500 dark:text-jpmc-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover">
                       <span>No Preview Available</span>
                     </div>
                   ) : imageModule ? (
@@ -162,7 +162,7 @@ const pageTitle = folderPath
                       class="max-w-full max-h-full object-contain"
                     />
                   ) : (
-                    <div class="text-gray-500 dark:text-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover">
+                    <div class="text-gray-500 dark:text-jpmc-gray-400 flex items-center justify-center p-4 min-h-[250px] object-cover">
                       <span>Image not found: {imageToUse}</span>
                     </div>
                   )}
@@ -173,7 +173,7 @@ const pageTitle = folderPath
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 truncate">
                   {entry.data.name.replace(/\.[^/.]+$/, '')}
                 </h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                <p class="text-sm text-gray-600 dark:text-jpmc-gray-400 mb-3">
                   {entry.data.type.toUpperCase()} •{' '}
                   {isFolder ? 'Folder' : 'File'}
                 </p>
